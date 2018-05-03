@@ -5,4 +5,7 @@ import org.gradle.api.Project
 
 class TemplaterPlugin: Plugin<Project> {
     
+    override fun apply(project: Project) {
+        
+    }
 }

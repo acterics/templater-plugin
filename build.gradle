@@ -14,6 +14,9 @@ repositories {
 dependencies {
     compileOnly 'org.jetbrains.kotlin:kotlin-gradle-plugin'
     compileOnly 'com.android.tools.build:gradle:3.0.1'
+    testCompile 'junit:junit:4.12'
+    testRuntime 'org.jetbrains.kotlin:kotlin-gradle-plugin'
+    testRuntime 'com.android.tools.build:gradle:3.0.1'
 }
 
 version = '0.0.1'

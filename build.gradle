@@ -1,0 +1,56 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.2.40'
+    id 'com.gradle.plugin-publish' version '0.9.10'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'idea'
+}
+
+repositories {
+    jcenter()
+    maven { url 'https://maven.google.com' }
+}
+
+dependencies {
+    compileOnly 'org.jetbrains.kotlin:kotlin-gradle-plugin'
+    compileOnly 'com.android.tools.build:gradle:3.0.1'
+}
+
+version = '0.0.1'
+group = 'com.acterics.gradle'
+def pluginId = 'com.acterics.templater'
+
+
+gradlePlugin { 
+    plugins {
+        templaterPlugin {
+            id = pluginId
+            implementationClass = 'com.acterics.gradle.templater.TemplaterPlugin'
+        }
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/acterics/templater-plugin'
+    vcsUrl = 'https://github.com/acterics/templater-plugin'
+    tags ['android', 'template', 'clean', 'architecture']
+    plugins {
+        templaterPlugin {
+            id = pluginId
+            displayName = 'Templater Android Plugin'
+            description = 'Plugin for creating template files in android project'
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.7'
+}
